@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AURIX – Fitness put into play. Jan 17–19, Ernakulam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#d10a0a;--deep:#1c0505;--bone:#f2ede4;--blood:#8f0606;--holo:linear-gradient(110deg,#ff9bd2,#9bd7ff,#fff3a3,#a8ffc6,#ff9bd2);
+--disp:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;--body:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;
+box-sizing:border-box;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;background:var(--red)}
+body{color:var(--bone);font:400 1.05rem/1.55 var(--body);overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.2;mix-blend-mode:multiply;
+background-image:radial-gradient(rgba(0,0,0,.9) 1px,transparent 1.4px);background-size:5px 5px}
+#sm{position:fixed;top:0;left:0;width:100%;will-change:transform}
+header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
+padding:calc(14px + env(safe-area-inset-top,0px)) 20px 14px}
+.brand{font:900 1.5rem/1 var(--disp);letter-spacing:.08em;text-decoration:none;color:var(--bone)}
+.brand small{display:block;font:600 .6rem/1.2 var(--body);letter-spacing:.38em;opacity:.8;margin-top:3px}
+.btn{display:inline-block;font:900 1.15rem/1 var(--disp);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;
+border:2px solid var(--bone);padding:15px 26px;color:var(--bone);background:transparent;transition:transform .15s,box-shadow .15s}
+.btn.solid{background:var(--bone);color:var(--red)}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--deep)}
+.btn:focus-visible,summary:focus-visible,.chip input:focus-visible+span{outline:3px solid #fff;outline-offset:3px}
+.btn.sm{padding:10px 16px;font-size:1rem}
+h2{font:900 clamp(3rem,10vw,8.5rem)/.84 var(--disp);text-transform:uppercase;margin:0 0 .3em}
+.pad{padding:clamp(70px,12vw,130px) clamp(20px,6vw,90px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+/* hero */
+.hero{height:100vh;height:100svh;min-height:560px;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;overflow:hidden;
+padding:70px clamp(14px,3vw,50px) 30px clamp(8px,2vw,30px);gap:clamp(12px,3vw,50px)}
+.vert{writing-mode:vertical-rl;transform:rotate(180deg);font:900 min(30vh,21vw)/.8 var(--disp);margin:0;letter-spacing:.01em;
+animation:rise 1.3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+.hero h1{font:900 clamp(2.2rem,6vw,4.8rem)/.9 var(--disp);text-transform:uppercase;margin:0 0 .35em}
+.when{font:800 clamp(1.6rem,3.6vw,2.8rem)/1 var(--disp);margin:0 0 .8em}
+.cd{display:flex;gap:10px;margin:0 0 1.2em}
+.cd div{min-width:68px;border:2px solid var(--bone);padding:8px 10px;font:900 2.2rem/1 var(--disp);text-align:center}
+.cd small{display:block;font:600 .75rem var(--body)}
+/* marquee */
+.mq{overflow:hidden;background:var(--deep);padding:18px 0;white-space:nowrap}
+.mq div{display:inline-block;font:900 clamp(2rem,5vw,3.6rem)/1 var(--disp);text-transform:uppercase;will-change:transform}
+/* schedule */
+.days{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:3px solid var(--bone)}
+.day{padding:22px 22px 30px 0;border-bottom:3px solid var(--bone)}
+.day b{display:block;font:900 clamp(3rem,7vw,5.5rem)/.9 var(--disp);text-transform:uppercase}
+.day span{display:block;font:800 1.5rem/1.2 var(--disp);text-transform:uppercase;margin-top:.4em}
+.day em{font-style:normal;opacity:.8}
+/* stack */
+.stage{position:relative;height:100vh;height:100svh;overflow:hidden;perspective:1400px;will-change:transform}
+.card{position:absolute;inset:0;transform-origin:50% 0;overflow:hidden;will-change:transform}
+.card .in{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;gap:4vw;align-content:end;padding:84px clamp(20px,6vw,90px) 7vh}
+.card h2{font-size:clamp(3.6rem,13vw,12rem);margin:0;align-self:end}
+.chipd{display:inline-block;background:var(--bone);color:var(--deep);font:900 1.2rem/1 var(--disp);text-transform:uppercase;padding:8px 14px;margin-bottom:18px}
+.card h3{font:800 1.6rem/1 var(--disp);margin:0 0 .6em;text-transform:uppercase}
+.card ul{margin:0;padding:0;list-style:none;max-width:30rem}
+.card li{padding:12px 0;border-top:1px solid rgba(242,237,228,.4)}
+.shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+/* prizes + rules */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,5vw,70px)}
+.rules{counter-reset:r;list-style:none;margin:0;padding:0}
+.rules li{padding:14px 0;border-top:2px solid var(--bone)}
+/* why */
+.dark{background:var(--deep);clip-path:polygon(0 18px,6% 0,14% 14px,27% 4px,41% 16px,55% 2px,70% 14px,84% 0,100% 12px,100% 100%,0 100%)}
+.why{font:800 clamp(2rem,5.6vw,4.6rem)/1.02 var(--disp);text-transform:uppercase;max-width:62rem;margin:0 0 1em}
+.why span{opacity:.22;transition:opacity .25s}.why span.on{opacity:1}
+.htrack .stage{perspective:none;display:flex;align-items:center}
+.row{display:flex;gap:20px;padding:0 clamp(20px,6vw,90px);will-change:transform}
+.amb{flex:0 0 min(78vw,420px);min-height:56vh;display:flex;flex-direction:column;justify-content:space-between;padding:26px;background:var(--red);border-radius:6px}
+.amb q{font:900 clamp(2rem,4vw,3rem)/1 var(--disp);text-transform:uppercase;quotes:"“" "”"}
+.amb small{opacity:.85}
+.holo{display:inline-block;margin:6px 0 0;padding:14px 20px;background:var(--holo);background-size:300% 100%;color:#14060a;font:900 1.3rem/1.1 var(--disp);text-transform:uppercase;animation:sh 6s linear infinite;border-radius:3px}
+@keyframes sh{to{background-position:300% 0}}
+#pledge[aria-pressed=true]{background:var(--red);border-color:var(--red);color:var(--bone)}
+/* faq + join */
+details{border-top:2px solid var(--bone);padding:16px 0}
+details:last-of-type{border-bottom:2px solid var(--bone)}
+summary{font:800 1.7rem/1.1 var(--disp);text-transform:uppercase;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";font-size:2rem;line-height:.8;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:.8em 0 0;max-width:40rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px;padding:0;border:0}
+.chip input{position:absolute;opacity:0}
+.chip span{display:inline-block;border:2px solid var(--bone);padding:10px 16px;font:800 1.05rem var(--disp);letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+.chip input:checked+span{background:var(--red);border-color:var(--red)}
+footer{padding:30px clamp(20px,6vw,90px) calc(36px + env(safe-area-inset-bottom,0px));opacity:.8;font-size:.95rem}
+@media (max-width:800px){.card .in{grid-template-columns:1fr;gap:14px;align-content:end}.card h2{font-size:clamp(3.2rem,17vw,6rem)}.card li{padding:8px 0;font-size:.98rem}.brand small{display:none}.cd div{min-width:58px;font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){.vert,.holo{animation:none}}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.btn{transition:transform .15s,box-shadow .15s,translate .25s}
+.pad h2.rv{clip-path:inset(0 0 100% 0);transform:translateY(40px);transition:clip-path 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.pad h2.rv.go{clip-path:inset(-5% -5% -12% -5%);transform:none}
+[hidden]{display:none!important}
+.cd div:last-child{animation:tk .45s}@keyframes tk{from{transform:translateY(-35%);opacity:.3}}
+.by{margin:0 0 1.2em;opacity:.9;max-width:26rem}
+.day{transition:background .3s,padding .3s}.day:hover{background:rgba(0,0,0,.2);padding-left:14px}
+.cal{display:inline-block;margin-top:18px;color:var(--bone);font:600 .95rem var(--body);text-underline-offset:4px}
+.note{margin:22px 0 0;opacity:.9}
+.card li{transition:padding .25s}.card li:hover{padding-left:12px}
+.bring{margin:14px 0 0;font-size:.95rem;max-width:30rem}.bring b{font:800 1.1rem var(--disp);text-transform:uppercase;margin-right:6px}
+@media (max-height:700px){.bring{display:none}}
+.tiers{list-style:none;margin:1.2em 0 0;padding:0}
+.tiers li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:2px solid var(--bone);font:800 1.5rem/1.1 var(--disp);text-transform:uppercase}
+.tiers span{font:400 .98rem var(--body);text-transform:none;opacity:.85;text-align:right}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;counter-reset:s}
+.steps li{border-top:3px solid var(--bone);padding-top:16px;counter-increment:s}
+.steps li::before{content:counter(s);display:block;font:900 4rem/1 var(--disp)}
+.steps b{display:block;font:800 1.6rem/1.1 var(--disp);text-transform:uppercase;margin:.2em 0 .4em}
+.help{margin-top:46px;border-top:2px solid var(--red);padding-top:22px}
+.help h3{font:800 1.8rem var(--disp);text-transform:uppercase;margin:0 0 .6em}
+.hl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.hl a{display:block;color:var(--bone);text-decoration:none;border:2px solid var(--bone);padding:16px;transition:background .2s,color .2s}
+.hl a:hover{background:var(--bone);color:var(--deep)}.hl b{display:block;font:900 2.6rem/1 var(--disp)}
+.amb{transition:transform .3s}.amb:hover{transform:translateY(-8px) rotate(-1deg)}
+details p{animation:fd .35s}@keyframes fd{from{opacity:0;transform:translateY(-8px)}}
+.nm{display:block;max-width:26rem;margin:0 0 20px;font:600 .95rem var(--body)}
+.nm input{display:block;width:100%;margin-top:8px;padding:14px 16px;background:transparent;border:2px solid var(--bone);border-radius:0;color:var(--bone);font:400 1.05rem var(--body)}
+.nm input:focus{outline:3px solid #fff;outline-offset:3px;background:rgba(255,255,255,.06)}
+.sum{margin:0 0 20px;opacity:.9}
+.chip input:checked+span::before{content:"✓ "}.chip input:checked+span{animation:pop .3s}@keyframes pop{50%{transform:scale(1.08)}}
+.shake{animation:shk .4s}@keyframes shk{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}.foot b{font:800 1.3rem var(--disp);text-transform:uppercase}
+#toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--bone);color:var(--deep);padding:12px 18px;border-radius:999px;font:600 .95rem var(--body);opacity:0;pointer-events:none;transition:.3s;z-index:70}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#stk{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;transform:translate(-50%,200%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+#stk.on{transform:translate(-50%,0)}
+#pg{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--bone);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.cf{position:fixed;width:8px;height:12px;z-index:300;pointer-events:none}
+#cur{position:fixed;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;mix-blend-mode:difference;z-index:200;pointer-events:none;opacity:0;transition:width .25s,height .25s,margin .25s}
+#cur.big{width:64px;height:64px;margin:-32px 0 0 -32px}html.mouse #cur{opacity:1}
+html.mouse,html.mouse a,html.mouse button,html.mouse summary,html.mouse label{cursor:none}
+@media (hover:none){#cur{display:none}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="pg"></div><div id="toast" role="status"></div><a class="btn solid" id="stk" href="#join">Register now</a>
+<canvas id="gl" aria-hidden="true"></canvas>
+<header>
+  <a class="brand" href="#top" aria-label="FitNFine fitness club">FITNFINE<small>Fitness club</small></a>
+  <a class="btn sm solid" href="#join">Register now</a>
+</header>
+<div id="sm">
+  <section class="hero" id="top">
+    <h2 class="vert" aria-label="AURIX">AURIX</h2>
+    <div id="heroin">
+      <h1>Fitness put into play.</h1>
+      <p class="when">Jan 17–19 in Ernakulam</p>
+      <p class="by">Presented by FitNFine Fitness Club. Come as you are, leave stronger.</p>
+      <div class="cd" id="cd" role="timer" aria-label="Countdown to AURIX"></div>
+      <div class="cta"><a class="btn solid" href="#join">Claim your spot</a><a class="btn" href="#schedule">See the schedule</a></div>
+    </div>
+  </section>
+  <div class="mq" aria-hidden="true"><div id="mq">Fitness put into play. Say no to drugs. Stronger people. Brighter tomorrow. Fitness put into play. Say no to drugs. Stronger people. Brighter tomorrow. Fitness put into play. Say no to drugs.</div></div>
+  <section class="pad" id="schedule">
+    <h2>Three days.<br>Five events.</h2>
+    <div class="days" id="days"></div>
+    <p class="note">Timings and venue details will be announced soon. Register to hear first.</p>
+  </section>
+  <section id="stack"><div class="stage" id="stackstage"></div></section>
+  <section class="pad two" id="rules">
+    <div><h2>Win exciting prizes</h2><p>Just by taking part. Prize details will be announced soon.</p><ul class="tiers"><li>Winners<span>Top prizes in every event</span></li><li>Podium finishers<span>Details to follow</span></li><li>Everyone who takes part<span>Details to follow</span></li></ul></div>
+    <div><h3 style="font:800 1.8rem var(--disp);text-transform:uppercase;margin:0 0 .6em">Before you come</h3><ol class="rules" id="pre"></ol></div>
+  </section>
+  <section class="pad" id="how"><h2>How to join</h2>
+    <ol class="steps"><li><b>Pick your events</b>Choose one or more in the form below. Check the schedule so your days don’t clash.</li><li><b>Register on WhatsApp</b>Your choices are filled in for you. A full registration form is coming soon.</li><li><b>Show up clean</b>Bring photo ID and arrive 30 minutes early on Jan 17–19.</li></ol></section>
+  <section class="dark pad" id="whysec">
+    <h2>Why we say no</h2>
+    <p class="why" id="why"></p>
+    <button class="btn solid" id="pledge" aria-pressed="false">Take the pledge</button> <a class="btn" id="sharep" hidden rel="noopener" href="#">Share your pledge</a>
+    <div class="help"><h3>Need help or want to talk?</h3><div class="hl"><a href="tel:1933"><b>1933</b>National Narcotics Helpline (MANAS). Toll-free, confidential, 24x7.</a><a href="tel:14416"><b>14416</b>Tele-MANAS. Toll-free mental health support.</a></div></div>
+  </section>
+  <section class="dark htrack" id="amb"><div class="stage" id="ambstage"><div class="row" id="row"></div></div></section>
+  <section class="dark pad" id="faq"><h2>Good to know</h2><div id="faqs"></div></section>
+  <section class="dark pad" id="join" style="background:var(--deep)">
+    <h2>Be there.<br>Jan 17–19.</h2>
+    <p style="max-width:34rem">Pick what you want to enter. We’ll open WhatsApp with your choices filled in, so you only have to hit send. A full registration form is coming soon.</p>
+    <label class="nm">Your name<input id="nm" type="text" autocomplete="name" placeholder="Full name"></label>
+    <fieldset class="chips" id="picks"><legend style="position:absolute;opacity:0">Choose events</legend></fieldset>
+    <p class="sum" id="sum" aria-live="polite">Pick at least one event.</p>
+    <div class="cta"><a class="btn solid" id="wa" href="#">Register on WhatsApp</a>
+    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=AURIX%20by%20FitNFine&dates=20270117/20270120&location=Ernakulam">Add to calendar</a><button class="btn" id="share">Share AURIX</button></div>
+    <p><span class="holo">Say no to drugs. Stronger people. Brighter tomorrow.</span></p>
+  </section>
+  <footer class="dark foot" style="clip-path:none"><div><b>AURIX</b><br>Jan 17–19, Ernakulam<br>Presented by FitNFine Fitness Club</div><div><b>Questions?</b><br>Message us on WhatsApp from the register section.</div><div><a href="#top" style="color:inherit">Back to top ↑</a><br>© 2026 FitNFine Fitness Club. AURIX is an anti-drug fitness festival.</div></footer>
+</div>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var START='2027-01-17T00:00:00+05:30';
+var EV=[
+{n:'Marathon',d:0,bg:'#b00909',b:'Running shoes, a water bottle and photo ID.',r:['Arrive early for check-in and bib collection.','Wear your bib on the front at all times.','Stay on the marked route. Shortcuts mean disqualification.']},
+{n:'Deadlift',d:0,bg:'#1c0505',b:'Flat-soled shoes, a towel and photo ID.',r:['Warm up in the warm-up area only.','A lift counts when you stand tall, knees locked, bar under control.','Judges’ calls are final. Three attempts per lifter.']},
+{n:'Under 20 football',d:1,bg:'#e8160f',b:'Boots, shin guards and photo ID showing your age.',r:['Every player must be under 20 on match day. Bring photo ID.','Teams register before the event. Late teams forfeit.','Fair play first. Fouls and dissent are punished with cards.']},
+{n:'Arm wrestling',d:1,bg:'#2a0707',b:'A towel, a short-sleeve top and photo ID.',r:['Elbow stays on the pad and the free hand holds the peg.','A match starts on the referee’s call. False starts get a warning.','No slipping the grip, no lifting the elbow.']},
+{n:'Physique competition',d:2,bg:'#7d0505',b:'Approved posing wear, a towel and photo ID.',r:['Compete in approved posing wear only.','Follow the posing order the judges call.','Judges score symmetry, conditioning and presentation.']}];
+var DAYS=['Jan 17','Jan 18','Jan 19'];
+var MORE=[{n:'And many more',d:2,t:'To be announced',bg:'#3a0808',r:['More events will be added before the festival.','Registered participants hear first.','Got an idea? Message us on WhatsApp.'],b:'Updates will come through WhatsApp.'}];
+// build
+$('#days').innerHTML=DAYS.map(function(D,i){var l=EV.filter(function(e){return e.d==i}).map(function(e){return e.n});if(i==2)l.push('And many more');
+return '<div class="day"><b>'+D+'</b>'+l.map(function(x){return '<span>'+x+'</span>'}).join('')+'<a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('AURIX Day '+(i+1)+': '+l.join(', '))+'&dates=202701'+(17+i)+'/202701'+(18+i)+'&location=Ernakulam">Add Day '+(i+1)+' to calendar</a></div>'}).join('');
+$('#stackstage').innerHTML=EV.concat(MORE).map(function(e){return '<article class="card" style="background:'+e.bg+'"><div class="in"><h2>'+e.n+'</h2><div><span class="chipd">'+(e.t||('Day '+(e.d+1)+', '+DAYS[e.d]))+'</span><h3>Basic rules</h3><ul>'+e.r.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'+(e.b?'<p class="bring"><b>Bring</b> '+e.b+'</p>':'')+'</div></div><div class="shade"></div></article>'}).join('');
+$('#pre').innerHTML=['Carry a valid photo ID.','Register for every event you enter.','Reach the venue 30 minutes before your event.','Take part at your own fitness level, and only if you’re medically fit.','Respect judges, volunteers and every competitor.','Stay clean. Anyone found using banned substances is out.'].map(function(x){return '<li>'+x+'</li>'}).join('');
+var WHY='AURIX is built on strength you earn. Drugs take your health, your future and the trust of your team. Here every rep, every mile and every match is clean.'.split(' ');
+$('#why').innerHTML=WHY.map(function(w){return '<span>'+w+'</span> '}).join('');var ws=[].slice.call($('#why').children);
+$('#row').innerHTML=[['Strength is built, never bought.'],['Clean wins feel different.'],['Show up. Stay clean. Lift each other.']].map(function(q){return '<div class="amb"><q>'+q[0]+'</q><small><b>Ambassador name</b><br>Role to be announced. Draft quote.</small></div>'}).join('');
+$('#faqs').innerHTML=[['Who can take part?','Anyone fit to take part, at their own level. Under 20 football is for players under 20 only.'],['How do I register?','Choose your events in the form below and message us on WhatsApp. A full registration form is coming soon.'],['What does it cost?','Entry details will be announced soon.'],['Can I enter more than one event?','Yes, as long as your events don’t clash. Check the schedule, then pick them all in the form.'],['What should I bring?','Photo ID, a water bottle and kit for your event. Each event card lists what to bring.'],['Can I come to watch?','Spectator details will be shared with the venue information.'],['What counts as clean sport?','No banned substances and no shortcuts. Anyone found using them is out. AURIX is built around an anti-drug message.'],['What are the prizes?','Exciting prizes for people who take part. Details will follow.'],['Where is it?','Ernakulam. Venue details will follow.'],['I need help with drugs. Who can I call?','Call 1933, the national narcotics helpline (MANAS), or 14416 for mental health support. Both are toll-free.']].map(function(f){return '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join('');
+$('#picks').insertAdjacentHTML('beforeend',EV.map(function(e){return '<label class="chip"><input type="checkbox" value="'+e.n+'"><span>'+e.n+'</span></label>'}).join(''));
+var wa=$('#wa'),nm=$('#nm'),sum=$('#sum');function pk(){return [].map.call(document.querySelectorAll('#picks input:checked'),function(i){return i.value})}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},2200)}
+function upd(){var v=pk(),n=nm.value.trim();wa.href='https://wa.me/?text='+encodeURIComponent('Hi FitNFine, I'+(n?' am '+n+' and I':'')+' want to register for AURIX (Jan 17–19, Ernakulam).'+(v.length?' Events: '+v.join(', ')+'.':''));wa.target='_blank';wa.rel='noopener';
+var ds=[];EV.forEach(function(e){if(v.indexOf(e.n)>-1&&ds.indexOf(DAYS[e.d])<0)ds.push(DAYS[e.d])});
+sum.textContent=v.length?v.length+(v.length>1?' events':' event')+' selected, on '+ds.join(' and ')+'.':'Pick at least one event.';wa.firstChild.nodeValue=v.length?'Register for '+v.length+(v.length>1?' events':' event'):'Register on WhatsApp'}
+wa.addEventListener('click',function(e){if(!pk().length){e.preventDefault();var c=$('#picks');c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');toast('Pick at least one event first')}});
+$('#picks').addEventListener('change',upd);nm.addEventListener('input',upd);upd();
+function burst(el){var r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;for(var i=0;i<28;i++){var d=document.createElement('i');d.className='cf';d.style.left=cx+'px';d.style.top=cy+'px';d.style.background=i%3?'#f2ede4':'#d10a0a';document.body.appendChild(d);var a=Math.random()*6.28,s=80+Math.random()*150;
+d.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+Math.cos(a)*s+'px,'+(Math.sin(a)*s+60)+'px) rotate('+(Math.random()*540)+'deg)',opacity:0}],{duration:900+Math.random()*500,easing:'cubic-bezier(.1,.7,.3,1)'}).onfinish=function(){this.effect.target.remove()}}}
+var pl=$('#pledge'),sp=$('#sharep');pl.onclick=function(){var on=pl.getAttribute('aria-pressed')!=='true';pl.setAttribute('aria-pressed',on);pl.textContent=on?'You’ve pledged. Stay clean.':'Take the pledge';sp.hidden=!on;if(on&&!rm)burst(pl);if(on)toast('Pledge taken. Stay clean.')};
+sp.href='https://wa.me/?text='+encodeURIComponent('I took the AURIX pledge: I say no to drugs. Join me at AURIX, Jan 17–19 in Ernakulam.');sp.target='_blank';
+// countdown
+var cd=$('#cd');function tickcd(){var ms=new Date(START)-Date.now();if(ms<=0){cd.innerHTML='<div style="font-size:1.6rem">AURIX is live</div>';return}
+var s=Math.floor(ms/1000),p=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60],l=['days','hrs','min','sec'];
+cd.innerHTML=p.map(function(v,i){return '<div>'+('0'+v).slice(-2)+'<small>'+l[i]+'</small></div>'}).join('')}
+tickcd();setInterval(tickcd,1000);
+// smooth scroll
+var sm=$('#sm'),H=0,vh=innerHeight,vw=innerWidth,y=0;
+function top(el){var t=0;while(el&&el!==sm){t+=el.offsetTop;el=el.offsetParent}return t}
+function size(){vh=innerHeight;vw=innerWidth;H=sm.offsetHeight;document.body.style.height=H+'px';setup()}
+var trackS=$('#stack'),trackA=$('#amb'),cards=[].slice.call(document.querySelectorAll('.card')),row=$('#row'),tS,tA,tW;
+function setup(){trackS.style.height=(cards.length*vh)+'px';tW=row.scrollWidth-vw+40;trackA.style.height=(vh+Math.max(0,tW))+'px';
+H=sm.offsetHeight;document.body.style.height=H+'px';tS=top(trackS);tA=top(trackA)}
+new ResizeObserver(function(){var h=sm.offsetHeight;if(h!==H)size()}).observe(sm);addEventListener('resize',size);
+function E(x){return x*x*(3-2*x)}function cl(x,a,b){return Math.max(a,Math.min(b,x))}
+var heroin=$('#heroin'),mq=$('#mq'),whyT=$('#why'),pg=$('#pg'),stk=$('#stk'),joinEl=$('#join'),tmx=0,tmy=0,mx=0,my=0;addEventListener('pointermove',function(e){tmx=e.clientX/innerWidth*2-1;tmy=e.clientY/innerHeight*2-1});
+function frame(){requestAnimationFrame(frame);var t=scrollY;y+=(t-y)*(rm?1:.085);if(Math.abs(t-y)<.05)y=t;
+var sk=rm?0:cl((t-y)*.012,-1.5,1.5);mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;sm.style.transform='translate3d(0,'+(-y).toFixed(2)+'px,0) skewY('+sk.toFixed(3)+'deg)';window.AX={y:y,v:rm?0:t-y,mx:mx,my:my};pg.style.transform='scaleX('+cl(y/Math.max(1,H-vh),0,1)+')';stk.classList.toggle('on',y>vh*.9&&y<top(joinEl)-vh*.6);
+var k=cl(y/vh,0,1);heroin.style.transform='translate3d(0,'+(y*.3)+'px,0) scale('+(1-.12*k)+')';heroin.style.opacity=1-.85*k;
+mq.style.transform='translate3d('+(-y*.35)+'px,0,0)';
+// stack
+var ps=cl(y-tS,0,cards.length*vh-vh);$('#stackstage').style.transform='translate3d(0,'+ps+'px,0)';var s=ps/vh;
+cards.forEach(function(c,i){var e=cl(s-i+1,0,1),d=cl(s-i,0,3),r=(1-E(e)),b=Math.min(d,1)*28;
+c.style.visibility=(e<=0||d>=3)?'hidden':'visible';
+c.style.transform='translate3d(0,'+(r*100-d*2.5)+'%,0) scale('+(1-.045*d)+') rotateX('+(Math.min(d,1)*4-my*2)+'deg) rotateY('+(mx*3)+'deg)';
+c.style.borderRadius=(r*18)+'vw '+(r*18)+'vw '+b+'px '+b+'px / '+(r*14)+'vh '+(r*14)+'vh '+b+'px '+b+'px';
+c.firstChild.style.transform='translate3d(0,'+(-r*14)+'%,0)';c.lastChild.style.opacity=cl(d*.4,0,.7)});
+// horizontal
+var pa=cl(y-tA,0,Math.max(0,tW));$('#ambstage').style.transform='translate3d(0,'+pa+'px,0)';row.style.transform='translate3d('+(-pa)+'px,0,0)';
+// words
+var wt=top(whyT)-y,pw=cl((vh*.85-wt)/(vh*.5+whyT.offsetHeight),0,1)*ws.length*1.15;ws.forEach(function(w,i){w.classList.toggle('on',i<pw)})}
+size();frame();
+var RT=document.documentElement,cur=$('#cur'),cx=0,cy=0,px=0,py=0;
+addEventListener('pointermove',function(e){if(e.pointerType==='mouse'){px=e.clientX;py=e.clientY;RT.classList.add('mouse')}});
+document.addEventListener('mouseover',function(e){cur.classList.toggle('big',!!e.target.closest('a,button,summary,.chip,.card'))});
+(function L(){requestAnimationFrame(L);cx+=(px-cx)*.18;cy+=(py-cy)*.18;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)'})();
+$('#share').onclick=function(){var d={title:'AURIX by FitNFine',text:'AURIX, Jan 17–19 in Ernakulam. Fitness put into play. Say no to drugs.',url:location.href};
+if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){toast('Link copied')},function(){toast('Copy the link from your address bar')})}else toast('Copy the link from your address bar')};
+var hs=[].slice.call(document.querySelectorAll('.pad h2'));
+if(!rm&&window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target)}})},{threshold:.25});hs.forEach(function(x){x.classList.add('rv');io.observe(x)})}
+[].forEach.call(document.querySelectorAll('.btn'),function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.translate=((e.clientX-r.left-r.width/2)*.25)+'px '+((e.clientY-r.top-r.height/2)*.35)+'px'});b.addEventListener('pointerleave',function(){b.style.translate=''})});
+// anchors
+document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1),el=id&&document.getElementById(id);
+if(id==='top'||el){e.preventDefault();scrollTo({top:id==='top'?0:top(el)-(id==='join'||id==='schedule'?0:0),behavior:rm?'auto':'smooth'})}});
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+if(!window.THREE)return;var T=THREE,cv=document.getElementById('gl'),R;
+try{R=new T.WebGLRenderer({canvas:cv,antialias:false})}catch(e){return}
+R.setPixelRatio(Math.min(devicePixelRatio,1.5));
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var S=new T.Scene(),C=new T.PerspectiveCamera(55,1,.1,50);C.position.z=5;
+var U={uT:{value:0},uV:{value:0},uS:{value:0},uR:{value:new T.Vector2(1,1)},uM:{value:new T.Vector2(.7,.8)}};
+var FS=`uniform float uT,uV,uS;uniform vec2 uR,uM;varying vec2 vUv;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float a=.5,s=0.;for(int i=0;i<4;i++){s+=a*n(p);p*=2.02;a*=.5;}return s;}
+void main(){vec2 p=vUv*vec2(uR.x/uR.y,1.)*2.2;p.y+=uS*.0007;float t=uT*.05;
+vec2 q=vec2(fbm(p+t+uV*.4),fbm(p+vec2(5.2,1.3)-t));
+float f=fbm(p+(1.6+uV)*q);
+vec3 red=vec3(.82,.04,.04),blood=vec3(.56,.02,.02),hot=vec3(.93,.11,.08);
+vec3 c=mix(blood,red,smoothstep(.2,.7,f));c=mix(c,hot,smoothstep(.5,.9,q.x)*.65);
+c+=vec3(.22,.04,.02)*smoothstep(.4,0.,distance(vUv,uM));
+gl_FragColor=vec4(c,1.);}`;
+var bg=new T.Mesh(new T.PlaneGeometry(2,2),new T.ShaderMaterial({uniforms:U,depthTest:false,depthWrite:false,
+vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,1.,1.);}',fragmentShader:FS}));
+bg.frustumCulled=false;bg.renderOrder=-1;S.add(bg);
+var N=360,P=[],pos=new Float32Array(N*6),k;
+for(k=0;k<N;k++)P.push({x:(Math.random()-.5)*20,y:Math.random()*12,z:-7+Math.random()*9});
+var g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(pos,3));
+var L=new T.LineSegments(g,new T.LineBasicMaterial({color:0xf2ede4,transparent:true,opacity:.5,depthTest:false}));
+L.frustumCulled=false;L.renderOrder=1;S.add(L);
+function rs(){var w=innerWidth,hh=innerHeight;R.setSize(w,hh,false);U.uR.value.set(w,hh);C.aspect=w/hh;C.updateProjectionMatrix()}
+addEventListener('resize',rs);rs();
+var t0=performance.now();
+(function loop(){requestAnimationFrame(loop);var a=window.AX||{y:0,v:0,mx:0,my:0},t=(performance.now()-t0)/1000*(rm?.1:1);
+U.uT.value=t;U.uS.value=a.y;U.uV.value=Math.min(2,Math.abs(a.v)/60);U.uM.value.set((a.mx+1)/2,1-(a.my+1)/2);
+var sg=a.v>0?1:-1,av=Math.min(Math.abs(a.v),300);
+for(k=0;k<N;k++){var p=P[k],d=(p.z+7)/9,yy=(((p.y-a.y*.0045*(.3+d))%12)+12)%12-6,xx=p.x+Math.sin(t*.5+p.y)*.2,ln=.05+av*.004*(.3+d),i=k*6;
+pos[i]=xx;pos[i+1]=yy;pos[i+2]=p.z;pos[i+3]=xx;pos[i+4]=yy-sg*ln;pos[i+5]=p.z}
+g.attributes.position.needsUpdate=true;
+C.position.x=a.mx*.5;C.position.y=-a.my*.3;C.lookAt(0,0,0);R.render(S,C)})();
+})();
+</script>
+</body>
+</html>
