@@ -1,0 +1,45 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:localhost)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(echo:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git blame:*)",
+      "Bash(git fetch:*)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote -v)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx next:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/lint-frontend.sh",
+            "timeout": 30000
+          }
+        ]
+      }
+    ]
+  }
+}
