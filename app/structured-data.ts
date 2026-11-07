@@ -36,7 +36,7 @@ export function buildAurixJsonLd() {
       eventStatus: "https://schema.org/EventScheduled",
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       location: placeLocation,
-      image: [`${SITE_URL}${event.fallbackImage}`],
+      image: [`${SITE_URL}${event.image}`],
       organizer: {
         "@id": organizationId,
       },

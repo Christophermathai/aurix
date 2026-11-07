@@ -8,6 +8,7 @@ const displayFont = Big_Shoulders({
   weight: ["800", "900"],
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const bodyFont = Schibsted_Grotesk({

@@ -1,4 +1,5 @@
 import {
+  AMBASSADORS,
   CALENDAR_URL,
   DAYS,
   DAY_ISO_DATES,
@@ -39,6 +40,10 @@ ${event.rules.map((rule) => `  - ${rule}`).join("\n")}`,
     .map((h) => `- **${h.name} (${h.number}):** ${h.note}`)
     .join("\n");
 
+  const leadershipLines = AMBASSADORS.map(
+    (person) => `- **${person.name}** — ${person.role} ("${person.quote}")`,
+  ).join("\n");
+
   const markdown = `# ${FESTIVAL.fullName}
 
 > ${FESTIVAL.name} is a three-day anti-drug fitness festival presented by ${FESTIVAL.organizer.name} in ${FESTIVAL.organizer.locality} (${FESTIVAL.organizer.city}), ${FESTIVAL.organizer.region}, ${FESTIVAL.organizer.countryName} from January 8 to January 10, 2027. It features five core athletic competitions — Marathon, Deadlift, Under-20 Football, Arm Wrestling, and Physique Competition — built around a clean-sport, drug-free community message: "${FESTIVAL.mission}"
@@ -52,6 +57,9 @@ ${event.rules.map((rule) => `  - ${rule}`).join("\n")}`,
 - **Core Cause:** Anti-drug youth and community fitness movement (${FESTIVAL.mission})
 - **Official Website:** ${SITE_URL}
 - **Google Calendar Link:** ${CALENDAR_URL}
+
+## Event Leadership & Organizers
+${leadershipLines}
 
 ## 3-Day Festival Schedule (Jan 8–10, 2027)
 ${scheduleLines}

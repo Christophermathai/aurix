@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import * as THREE from "three";
 import {
+  AMBASSADORS,
   CALENDAR_URL,
   DAYS,
   EVENTS,
@@ -806,18 +807,15 @@ export default function AurixExperience() {
               style={{ backgroundColor: event.background }}
             >
               <div className="stack-card-media">
-                <picture>
-                  <source type="image/webp" srcSet={event.image} />
-                  <img
-                    src={event.fallbackImage}
-                    alt={event.alt}
-                    width={event.width}
-                    height={event.height}
-                    className="stack-card-image"
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                </picture>
+                <img
+                  src={event.image}
+                  alt={event.alt}
+                  width={event.width}
+                  height={event.height}
+                  className="stack-card-image"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
                 <div className="stack-card-overlay" aria-hidden="true" />
               </div>
               <div className="stack-card-inner">
@@ -971,17 +969,33 @@ export default function AurixExperience() {
         <p className="eyebrow">The AURIX state of mind</p>
         <div className="ambassador-stage">
           <div className="ambassador-track">
-            {[
-              "Strength is built, never bought.",
-              "Clean wins feel different.",
-              "Show up. Stay clean. Lift each other.",
-            ].map((quote) => (
-              <blockquote className="ambassador-card" key={quote}>
-                <q>{quote}</q>
+            {AMBASSADORS.map((person) => (
+              <blockquote
+                className={`ambassador-card${person.image ? " has-image" : ""}`}
+                key={person.quote}
+              >
+                {person.image && (
+                  <div className="ambassador-card-media">
+                    <img
+                      src={person.image}
+                      alt={person.alt}
+                      width={person.width ?? undefined}
+                      height={person.height ?? undefined}
+                      className="ambassador-card-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div
+                      className="ambassador-card-overlay"
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
+                <q>{person.quote}</q>
                 <footer>
-                  <strong>Ambassador name</strong>
+                  <strong>{person.name}</strong>
                   <br />
-                  Role to be announced. Draft quote.
+                  {person.role}
                 </footer>
               </blockquote>
             ))}

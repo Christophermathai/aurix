@@ -68,7 +68,6 @@ export const EVENTS = [
     day: 0,
     background: "#b00909",
     image: "/marathon.webp",
-    fallbackImage: "/marathon.png",
     width: 1672,
     height: 941,
     alt: "Runners racing along a curved track at sunrise for the AURIX Marathon in Ernakulam, Kochi",
@@ -87,7 +86,6 @@ export const EVENTS = [
     day: 0,
     background: "#1c0505",
     image: "/deadlift.webp",
-    fallbackImage: "/deadlift.png",
     width: 1672,
     height: 941,
     alt: "Powerlifter setting up over a loaded barbell for the AURIX Deadlift competition in Ernakulam",
@@ -106,7 +104,6 @@ export const EVENTS = [
     day: 1,
     background: "#e8160f",
     image: "/football.webp",
-    fallbackImage: "/football.png",
     width: 1672,
     height: 941,
     alt: "Youth footballers competing on turf for the AURIX Under-20 Football tournament in Kochi",
@@ -125,7 +122,6 @@ export const EVENTS = [
     day: 1,
     background: "#2a0707",
     image: "/arm-wrestling.webp",
-    fallbackImage: "/arm-wrestling.png",
     width: 1672,
     height: 941,
     alt: "Two athletes locked in a referee-judged match at the AURIX Arm Wrestling championship",
@@ -144,7 +140,6 @@ export const EVENTS = [
     day: 2,
     background: "#7d0505",
     image: "/physique.webp",
-    fallbackImage: "/physique.png",
     width: 1448,
     height: 1086,
     alt: "Natural physique athletes posing onstage at the AURIX Physique Competition in Ernakulam, Kerala",
@@ -225,6 +220,36 @@ export const PRE_EVENT_RULES = [
   "Take part at your own fitness level, and only if you’re medically fit.",
   "Respect judges, volunteers and every competitor.",
   "Stay clean. Anyone found using banned substances is out.",
+] as const;
+
+export const AMBASSADORS = [
+  {
+    quote: "Strength is built, never bought.",
+    name: "Sinu Antony",
+    role: "Event Director",
+    image: "/Sinu_antony.webp",
+    width: 1200,
+    height: 1600,
+    alt: "Sinu Antony, Event Director of AURIX 2027 by FitNFine Fitness Club",
+  },
+  {
+    quote: "Clean wins feel different.",
+    name: "Gayathri P S",
+    role: "Assistant Event Coordinator",
+    image: "/gayathri_ps.webp",
+    width: 1080,
+    height: 1280,
+    alt: "Gayathri P S, Assistant Event Coordinator of AURIX 2027 by FitNFine Fitness Club",
+  },
+  {
+    quote: "Show up. Stay clean. Lift each other.",
+    name: "Subish S",
+    role: "Event Co-ordinator",
+    image: null,
+    width: null,
+    height: null,
+    alt: "",
+  },
 ] as const;
 
 export const WHY_WORDS =
