@@ -1,6 +1,6 @@
 # Metadata Routes, SEO, AEO & GEO Conventions
 
-Applies to Next.js metadata routes (`app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts`, `app/icon.tsx`, `app/apple-icon.tsx`, `app/opengraph-image.tsx`), `/llms.txt` (`app/llms.txt/route.ts`), and JSON-LD structured data (`app/structured-data.ts`).
+Applies to Next.js metadata routes (`app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts`, `app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`, `app/opengraph-image.tsx`), `/llms.txt` (`app/llms.txt/route.ts`), and JSON-LD structured data (`app/structured-data.ts`).
 
 ## 1. SEO & Discovery Routes
 
@@ -11,9 +11,9 @@ Applies to Next.js metadata routes (`app/robots.ts`, `app/sitemap.ts`, `app/mani
 - **`app/sitemap.ts` (`/sitemap.xml`)**:
   - Publishes `/` and `/llms.txt`.
   - Uses deterministic ISO date strings rather than uncached `new Date()` calls so static generation succeeds under `cacheComponents: true`.
-- **`next/og` Image Routes (`app/icon.tsx`, `app/apple-icon.tsx`, `app/opengraph-image.tsx`)**:
-  - Import `ImageResponse` from `"next/og"`.
-  - Every `<div>` with multiple children inside `ImageResponse` must explicitly declare `display: "flex"`.
+- **Brand Icons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) & `next/og` Social Card (`app/opengraph-image.tsx`)**:
+  - `app/favicon.ico`, `app/icon.png` (`256x256`), and `app/apple-icon.png` (`256x256`) serve the dedicated AURIX "A" emblem across desktop tabs, Google Search results, iOS home screens, and the Web App Manifest.
+  - `app/opengraph-image.tsx` imports `ImageResponse` from `"next/og"`. Every `<div>` with multiple children inside `ImageResponse` must explicitly declare `display: "flex"`.
 
 ## 2. Answer Engine Optimization (AEO) & Structured Data (`app/structured-data.ts`)
 

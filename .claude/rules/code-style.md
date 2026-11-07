@@ -23,7 +23,7 @@ Applies to the **AURIX 2027** web application (`z:\aurix`), the official anti-dr
   - Scroll-linked word-by-word reveal (`.why-copy`), pledge confetti burst, and WhatsApp registration link generator.
 - `app/structured-data.ts` — Builds the connected `@graph` JSON-LD payload (`SportsOrganization`, `WebSite`, `WebPage` with `SpeakableSpecification`, `SportsEvent` + 5 `subEvent`s, and `FAQPage`).
 - `app/llms.txt/route.ts` — Route Handler serving the `llmstxt.org`-compliant Markdown briefing at `/llms.txt`.
-- `app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts`, `app/icon.tsx`, `app/apple-icon.tsx`, `app/opengraph-image.tsx` — Next.js App Router metadata and discovery routes.
+- `app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts`, `app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`, `app/opengraph-image.tsx` — Next.js App Router metadata, static brand icons, and discovery routes.
 
 ## Design System & CSS Conventions (`app/globals.css`)
 
