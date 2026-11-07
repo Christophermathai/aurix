@@ -66,7 +66,7 @@ Write brainstorm output to `project-delivery/brainstorms/NNN-[feature-name]/brai
 
 - Always read the issue first — don't assume what it says
 - Check if related issues exist that could be addressed together (mention them to the user)
-- Respect the project's code style rules (`.claude/rules/code-style.md`)
+- Respect the project's code style rules (`.agents/rules/code-style.md`)
 - Use shadcn components, shared components, and TeamAvatar per project conventions
 - Record architectural decisions in `project-delivery/decisions.md` if applicable
 - Record reusable lessons in `project-delivery/learnings.md` if applicable

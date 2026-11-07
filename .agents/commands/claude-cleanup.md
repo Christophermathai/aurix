@@ -6,7 +6,7 @@ Canonical usage: `/claude-cleanup [optional: specific settings file path]`
 
 The skill:
 
-1. **Reviews** `.claude/settings.json` and `.claude/settings.local.json` (or the file path passed as an argument) for:
+1. **Reviews** `.agents/settings.json` and `.agents/settings.local.json` (or the file path passed as an argument) for:
    - Secrets and credentials embedded in allow-list entries
    - High-risk wildcards allowing arbitrary code execution
    - Medium-risk destructive patterns

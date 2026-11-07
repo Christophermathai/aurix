@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/lint-frontend.sh",
+            "command": "$CLAUDE_PROJECT_DIR/.agents/hooks/lint-frontend.sh",
             "timeout": 30000
           }
         ]
