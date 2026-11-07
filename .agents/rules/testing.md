@@ -9,6 +9,9 @@ Run all checks from the repository root (`z:\aurix`):
 | `npx tsc --noEmit` | Strict TypeScript type-checking across all App Router files, components, and metadata routes |
 | `npm run lint` | Runs ESLint (`eslint-config-next` 16.4.5) |
 | `npm run build` | Builds the production Next.js 16 application and validates static/cached route generation |
+| `npm run build:worker` | Builds the Cloudflare Worker bundle using `@opennextjs/cloudflare` |
+| `npm run preview:worker` | Builds and runs the local Cloudflare `workerd` preview server on port 8787 |
+| `npm run deploy:worker` | Builds and deploys the worker live to Cloudflare Workers via Wrangler |
 | `npm run dev` | Starts the local Next.js Turbopack dev server on `http://localhost:3000` |
 
 ## Endpoint & Route Smoke Checks

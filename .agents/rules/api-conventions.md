@@ -29,3 +29,10 @@ Applies to Next.js metadata routes (`app/robots.ts`, `app/sitemap.ts`, `app/mani
 
 - `/llms.txt` serves a clean Markdown document (`Content-Type: text/plain; charset=utf-8`) following the `llmstxt.org` specification.
 - It dynamically interpolates `FESTIVAL`, `DAYS`, `DAY_ISO_DATES`, `EVENTS`, `AMBASSADORS`, `PRE_EVENT_RULES`, and `FAQS` from `app/festival-data.ts` so LLM agents always ingest current facts with zero drift.
+
+## 4. Cloudflare Workers Runtime (`wrangler.jsonc` & `open-next.config.ts`)
+
+- Deployment to Cloudflare Workers is managed via `@opennextjs/cloudflare`.
+- Worker entry point is `.open-next/worker.js`, running with `compatibility_flags: ["nodejs_compat"]`.
+- Static assets (images, fonts, stylesheets) are extracted to `.open-next/assets` and served through the `ASSETS` binding.
+- Exclude `open-next.config.ts`, `.open-next`, and `.wrangler` from `tsconfig.json` so the Next.js app compiler does not type-check external build tools.
