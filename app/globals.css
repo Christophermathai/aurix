@@ -106,24 +106,40 @@ a {
   mix-blend-mode: screen;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .smooth-content {
-  position: fixed;
+  position: relative;
   z-index: 1;
+  width: 100%;
+}
+
+.smooth-content.is-smooth-ready {
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   transform-origin: 50% 0;
-  will-change: transform, opacity;
+  will-change: transform;
   pointer-events: none;
 }
 
-.smooth-content a,
-.smooth-content button,
-.smooth-content input,
-.smooth-content summary,
-.smooth-content label,
-.smooth-content select,
-.smooth-content textarea {
+.smooth-content.is-smooth-ready a,
+.smooth-content.is-smooth-ready button,
+.smooth-content.is-smooth-ready input,
+.smooth-content.is-smooth-ready summary,
+.smooth-content.is-smooth-ready label,
+.smooth-content.is-smooth-ready select,
+.smooth-content.is-smooth-ready textarea {
   pointer-events: auto;
 }
 
@@ -375,7 +391,7 @@ a {
 .marquee-track {
   display: flex;
   width: max-content;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .marquee-track span {
@@ -498,7 +514,7 @@ a {
   overflow: hidden;
   perspective: 1400px;
   transform-origin: 50% 0;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .stack-card {
@@ -508,7 +524,7 @@ a {
   transform-origin: 50% 0;
   backface-visibility: hidden;
   border-radius: 28px 28px 0 0;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .stack-card-media {
@@ -901,7 +917,7 @@ a {
   height: 100svh;
   align-items: center;
   overflow: hidden;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .ambassador-track {
@@ -909,7 +925,7 @@ a {
   width: max-content;
   gap: 20px;
   padding: 72px clamp(22px, 8vw, 130px) 0;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .ambassador-grid {

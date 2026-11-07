@@ -3,142 +3,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import * as THREE from "three";
-
-const DAYS = ["Jan 8", "Jan 9", "Jan 10"] as const;
-
-const EVENTS = [
-  {
-    name: "Marathon",
-    day: 0,
-    background: "#b00909",
-    image: "/marathon.webp",
-    fallbackImage: "/marathon.png",
-    bring: "Running shoes, a water bottle and photo ID.",
-    rules: [
-      "Arrive early for check-in and bib collection.",
-      "Wear your bib on the front at all times.",
-      "Stay on the marked route. Shortcuts mean disqualification.",
-    ],
-  },
-  {
-    name: "Deadlift",
-    day: 0,
-    background: "#1c0505",
-    image: "/deadlift.webp",
-    fallbackImage: "/deadlift.png",
-    bring: "Flat-soled shoes, a towel and photo ID.",
-    rules: [
-      "Warm up in the warm-up area only.",
-      "A lift counts when you stand tall, knees locked, bar under control.",
-      "Judges’ calls are final. Three attempts per lifter.",
-    ],
-  },
-  {
-    name: "Under 20 football",
-    day: 1,
-    background: "#e8160f",
-    image: "/football.webp",
-    fallbackImage: "/football.png",
-    bring: "Boots, shin guards and photo ID showing your age.",
-    rules: [
-      "Every player must be under 20 on match day. Bring photo ID.",
-      "Teams register before the event. Late teams forfeit.",
-      "Fair play first. Fouls and dissent are punished with cards.",
-    ],
-  },
-  {
-    name: "Arm wrestling",
-    day: 1,
-    background: "#2a0707",
-    image: "/arm-wrestling.webp",
-    fallbackImage: "/arm-wrestling.png",
-    bring: "A towel, a short-sleeve top and photo ID.",
-    rules: [
-      "Elbow stays on the pad and the free hand holds the peg.",
-      "A match starts on the referee’s call. False starts get a warning.",
-      "No slipping the grip, no lifting the elbow.",
-    ],
-  },
-  {
-    name: "Physique competition",
-    day: 2,
-    background: "#7d0505",
-    image: "/physique.webp",
-    fallbackImage: "/physique.png",
-    bring: "Approved posing wear, a towel and photo ID.",
-    rules: [
-      "Compete in approved posing wear only.",
-      "Follow the posing order the judges call.",
-      "Judges score symmetry, conditioning and presentation.",
-    ],
-  },
-] as const;
-
-const MORE_EVENTS = [
-  "More events will be added before the festival.",
-  "Registered participants hear first.",
-  "Got an idea? Message us on WhatsApp.",
-];
-
-const FAQS = [
-  {
-    question: "Who can take part?",
-    answer:
-      "Anyone fit to take part, at their own level. Under 20 football is for players under 20 only.",
-  },
-  {
-    question: "How do I register?",
-    answer:
-      "Choose your events in the form below and message us on WhatsApp. A full registration form is coming soon.",
-  },
-  { question: "What does it cost?", answer: "Entry details will be announced soon." },
-  {
-    question: "Can I enter more than one event?",
-    answer:
-      "Yes, as long as your events don’t clash. Check the schedule, then pick them all in the form.",
-  },
-  {
-    question: "What should I bring?",
-    answer:
-      "Photo ID, a water bottle and kit for your event. Each event card lists what to bring.",
-  },
-  {
-    question: "Can I come to watch?",
-    answer: "Spectator details will be shared with the venue information.",
-  },
-  {
-    question: "What counts as clean sport?",
-    answer:
-      "No banned substances and no shortcuts. Anyone found using them is out. AURIX is built around an anti-drug message.",
-  },
-  {
-    question: "What are the prizes?",
-    answer: "Exciting prizes for people who take part. Details will follow.",
-  },
-  { question: "Where is it?", answer: "Ernakulam. Venue details will follow." },
-  {
-    question: "I need help with drugs. Who can I call?",
-    answer:
-      "Call 1933, the national narcotics helpline (MANAS), or 14416 for mental health support. Both are toll-free.",
-  },
-];
-
-const PRE_EVENT_RULES = [
-  "Carry a valid photo ID.",
-  "Register for every event you enter.",
-  "Reach the venue 30 minutes before your event.",
-  "Take part at your own fitness level, and only if you’re medically fit.",
-  "Respect judges, volunteers and every competitor.",
-  "Stay clean. Anyone found using banned substances is out.",
-];
-
-const WHY_WORDS =
-  "AURIX is built on strength you earn. Drugs take your health, your future and the trust of your team. Here every rep, every mile and every match is clean.".split(
-    " ",
-  );
-
-const CALENDAR_URL =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=AURIX%20by%20FitNFine&dates=20270108/20270111&location=Ernakulam";
+import {
+  CALENDAR_URL,
+  DAYS,
+  EVENTS,
+  FAQS,
+  MORE_EVENTS,
+  PRE_EVENT_RULES,
+  WHY_WORDS,
+  dayCalendarUrl,
+} from "./festival-data";
 
 type MotionState = {
   y: number;
@@ -146,17 +20,6 @@ type MotionState = {
   mouseX: number;
   mouseY: number;
 };
-
-function dayCalendarUrl(day: number, eventNames: string[]) {
-  const startDay = 8 + day;
-  const endDay = startDay + 1;
-  const startStr = String(startDay).padStart(2, "0");
-  const endStr = String(endDay).padStart(2, "0");
-  const title = encodeURIComponent(
-    `AURIX Day ${day + 1}: ${eventNames.join(", ")}`,
-  );
-  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=202701${startStr}/202701${endStr}&location=Ernakulam`;
-}
 
 export default function AurixExperience() {
   const [countdown, setCountdown] = useState<number | null>(null);
@@ -215,6 +78,7 @@ export default function AurixExperience() {
       "(prefers-reduced-motion: reduce)",
     );
     const smoothContent = content;
+    smoothContent.classList.add("is-smooth-ready");
     const stackSection = content.querySelector<HTMLElement>(".stack-section");
     const stackStage = content.querySelector<HTMLElement>(".stack-stage");
     const cards = Array.from(
@@ -515,6 +379,7 @@ export default function AurixExperience() {
         .forEach((button) => (button.style.translate = ""));
       document.body.style.height = "";
       smoothContent.style.transform = "";
+      smoothContent.classList.remove("is-smooth-ready");
       document.documentElement.classList.remove("mouse-pointer");
     };
   }, []);
@@ -829,13 +694,16 @@ export default function AurixExperience() {
 
       <div className="smooth-content" ref={contentRef}>
         <section className="hero" id="top">
-        <h1 className="hero-mark" aria-label="AURIX">
+        <h1 className="hero-mark">
           AURIX
+          <span className="sr-only">
+            {" "}2027 — Anti-Drug Fitness Festival in Ernakulam, Kochi, Kerala
+          </span>
         </h1>
         <div className="hero-content">
           <p className="eyebrow">FitNFine presents</p>
           <h2>Fitness put into play.</h2>
-          <p className="hero-date">Jan 8–10 in Ernakulam</p>
+          <p className="hero-date">Jan 8–10, 2027 in Ernakulam</p>
           <p className="hero-description">
             Come as you are, leave stronger. Three days, five events, one
             stronger community.
@@ -843,13 +711,17 @@ export default function AurixExperience() {
           <div className="countdown" role="timer" aria-label="Countdown to AURIX">
             {countdown === 0 ? (
               <p className="countdown-live">AURIX is live</p>
-            ) : (
-              timeParts?.map((part) => (
+            ) : timeParts ? (
+              timeParts.map((part) => (
                 <div className="countdown-unit" key={part.label}>
                   {String(part.value).padStart(2, "0")}
                   <small>{part.label}</small>
                 </div>
               ))
+            ) : (
+              <span className="sr-only">
+                Starts January 8, 2027 in Ernakulam, Kochi
+              </span>
             )}
           </div>
           <div className="button-row">
@@ -927,24 +799,26 @@ export default function AurixExperience() {
       </section>
       <section className="stack-section" aria-label="Festival events">
         <div className="stack-stage">
-          {EVENTS.map((event) => (
+          {EVENTS.map((event, index) => (
             <article
               className="stack-card"
               key={event.name}
               style={{ backgroundColor: event.background }}
             >
-              <div className="stack-card-media" aria-hidden="true">
+              <div className="stack-card-media">
                 <picture>
                   <source type="image/webp" srcSet={event.image} />
                   <img
                     src={event.fallbackImage}
-                    alt=""
+                    alt={event.alt}
+                    width={event.width}
+                    height={event.height}
                     className="stack-card-image"
-                    loading="eager"
+                    loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
                   />
                 </picture>
-                <div className="stack-card-overlay" />
+                <div className="stack-card-overlay" aria-hidden="true" />
               </div>
               <div className="stack-card-inner">
                 <h2>{event.name}</h2>
@@ -1209,7 +1083,7 @@ export default function AurixExperience() {
         <div>
           <strong>AURIX</strong>
           <br />
-          Jan 8–10, Ernakulam
+          Jan 8–10, 2027 · Ernakulam, Kochi
           <br />
           Presented by FitNFine Fitness Club
         </div>
@@ -1220,8 +1094,8 @@ export default function AurixExperience() {
         </div>
         <div>
           <a href="#top">Back to top ↑</a>
-          <br />© 2026 FitNFine Fitness Club. AURIX is an anti-drug fitness
-          festival.
+          <br />© 2026–2027 FitNFine Fitness Club, Ernakulam, Kerala. AURIX is
+          an anti-drug fitness festival.
         </div>
       </footer>
       </div>
