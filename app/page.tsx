@@ -1,12 +1,18 @@
-import type { Metadata } from "next";
 import AurixExperience from "./aurix-experience";
-
-export const metadata: Metadata = {
-  title: "AURIX — Fitness put into play",
-  description:
-    "Join AURIX, the FitNFine Fitness Club festival in Ernakulam, January 8–10, 2027. Three days, five events, and a message for a stronger, drug-free tomorrow.",
-};
+import { buildAurixJsonLd } from "./structured-data";
 
 export default function Home() {
-  return <AurixExperience />;
+  const jsonLd = buildAurixJsonLd();
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <AurixExperience />
+    </>
+  );
 }
