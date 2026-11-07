@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, Schibsted_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
+import { Schibsted_Grotesk } from "next/font/google";
 import { FESTIVAL, SITE_URL } from "./festival-data";
 import "./globals.css";
 
-const displayFont = Big_Shoulders({
+const displayFont = localFont({
+  src: "./fonts/big-shoulders-display.woff2",
   variable: "--font-aurix-display",
-  weight: ["800", "900"],
-  subsets: ["latin"],
+  weight: "800 900",
   display: "swap",
-  adjustFontFallback: false,
 });
 
 const bodyFont = Schibsted_Grotesk({

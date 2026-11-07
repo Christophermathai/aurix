@@ -32,10 +32,9 @@ Applies to the **AURIX 2027** web application (`z:\aurix`), the official anti-dr
   - `--deep: #5e0505` (Deep blood-red surface for dark sections & footer)
   - `--bone: #f2ede4` (Primary bone/off-white typography and borders)
   - `--ink: #14060a` (Dark contrast ink)
-- **Typography Tokens** (loaded via `next/font/google` in `app/layout.tsx` with `display: "swap"`):
-  - `--display`: `Anton` — Uppercase display headings, hero mark, event titles, countdown numbers, and buttons.
-  - `--body`: `Space Grotesk` — Body copy, rules lists, and form controls.
-  - `--accent`: `Syne` — Eyebrow labels.
+- **Typography Tokens**:
+  - `--display`: `Big Shoulders Display` (weights 800, 900) loaded via `next/font/local` in `app/layout.tsx` (`app/fonts/big-shoulders-display.woff2`) for zero-layout-shift and clean Turbopack compilation.
+  - `--body`: `Schibsted Grotesk` (weights 400, 600, 700) loaded via `next/font/google` in `app/layout.tsx`.
 - **Styling Discipline**:
   - Keep component layout, keyframe animations, and media queries (`max-width: 900px`, `max-width: 640px`, `prefers-reduced-motion: reduce`) in `app/globals.css`.
   - Preserve visual hierarchy and brutalist/kinetic editorial styling (sharp `2px solid var(--bone)` borders, uppercase display typography, high-contrast overlays on photography).
