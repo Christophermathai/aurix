@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AURIX – Fitness put into play. Jan 17–19, Ernakulam</title>
+<title>AURIX – Fitness put into play. Jan 8–10, Ernakulam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,13 +53,16 @@ animation:rise 1.3s cubic-bezier(.2,.8,.2,1) both}
 /* stack */
 .stage{position:relative;height:100vh;height:100svh;overflow:hidden;perspective:1400px;will-change:transform}
 .card{position:absolute;inset:0;transform-origin:50% 0;overflow:hidden;will-change:transform}
-.card .in{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;gap:4vw;align-content:end;padding:84px clamp(20px,6vw,90px) 7vh}
-.card h2{font-size:clamp(3.6rem,13vw,12rem);margin:0;align-self:end}
-.chipd{display:inline-block;background:var(--bone);color:var(--deep);font:900 1.2rem/1 var(--disp);text-transform:uppercase;padding:8px 14px;margin-bottom:18px}
-.card h3{font:800 1.6rem/1 var(--disp);margin:0 0 .6em;text-transform:uppercase}
-.card ul{margin:0;padding:0;list-style:none;max-width:30rem}
+.card-media{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,2,2,.94) 0%,rgba(8,2,2,.8) 32%,rgba(8,2,2,.45) 58%,rgba(8,2,2,.15) 85%,rgba(8,2,2,.08) 100%),radial-gradient(ellipse at 50% 35%,transparent 35%,rgba(0,0,0,.5) 100%)}
+.card .in{position:absolute;inset:0;display:grid;grid-template-columns:1.2fr 1fr;gap:4vw;align-content:end;padding:84px clamp(20px,6vw,90px) 7vh;z-index:2}
+.card h2{font-size:clamp(3.6rem,13vw,12rem);margin:0;align-self:end;text-shadow:0 4px 28px rgba(0,0,0,.7)}
+.chipd{display:inline-block;background:var(--bone);color:var(--deep);font:900 1.2rem/1 var(--disp);text-transform:uppercase;padding:8px 14px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+.card h3{font:800 1.6rem/1 var(--disp);margin:0 0 .6em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.85)}
+.card ul{margin:0;padding:0;list-style:none;max-width:30rem;text-shadow:0 2px 14px rgba(0,0,0,.85)}
 .card li{padding:12px 0;border-top:1px solid rgba(242,237,228,.4)}
-.shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:3}
 /* prizes + rules */
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,5vw,70px)}
 .rules{counter-reset:r;list-style:none;margin:0;padding:0}
@@ -148,7 +151,7 @@ html.mouse,html.mouse a,html.mouse button,html.mouse summary,html.mouse label{cu
     <h2 class="vert" aria-label="AURIX">AURIX</h2>
     <div id="heroin">
       <h1>Fitness put into play.</h1>
-      <p class="when">Jan 17–19 in Ernakulam</p>
+      <p class="when">Jan 8–10 in Ernakulam</p>
       <p class="by">Presented by FitNFine Fitness Club. Come as you are, leave stronger.</p>
       <div class="cd" id="cd" role="timer" aria-label="Countdown to AURIX"></div>
       <div class="cta"><a class="btn solid" href="#join">Claim your spot</a><a class="btn" href="#schedule">See the schedule</a></div>
@@ -166,7 +169,7 @@ html.mouse,html.mouse a,html.mouse button,html.mouse summary,html.mouse label{cu
     <div><h3 style="font:800 1.8rem var(--disp);text-transform:uppercase;margin:0 0 .6em">Before you come</h3><ol class="rules" id="pre"></ol></div>
   </section>
   <section class="pad" id="how"><h2>How to join</h2>
-    <ol class="steps"><li><b>Pick your events</b>Choose one or more in the form below. Check the schedule so your days don’t clash.</li><li><b>Register on WhatsApp</b>Your choices are filled in for you. A full registration form is coming soon.</li><li><b>Show up clean</b>Bring photo ID and arrive 30 minutes early on Jan 17–19.</li></ol></section>
+    <ol class="steps"><li><b>Pick your events</b>Choose one or more in the form below. Check the schedule so your days don’t clash.</li><li><b>Register on WhatsApp</b>Your choices are filled in for you. A full registration form is coming soon.</li><li><b>Show up clean</b>Bring photo ID and arrive 30 minutes early on Jan 8–10.</li></ol></section>
   <section class="dark pad" id="whysec">
     <h2>Why we say no</h2>
     <p class="why" id="why"></p>
@@ -176,33 +179,33 @@ html.mouse,html.mouse a,html.mouse button,html.mouse summary,html.mouse label{cu
   <section class="dark htrack" id="amb"><div class="stage" id="ambstage"><div class="row" id="row"></div></div></section>
   <section class="dark pad" id="faq"><h2>Good to know</h2><div id="faqs"></div></section>
   <section class="dark pad" id="join" style="background:var(--deep)">
-    <h2>Be there.<br>Jan 17–19.</h2>
+    <h2>Be there.<br>Jan 8–10.</h2>
     <p style="max-width:34rem">Pick what you want to enter. We’ll open WhatsApp with your choices filled in, so you only have to hit send. A full registration form is coming soon.</p>
     <label class="nm">Your name<input id="nm" type="text" autocomplete="name" placeholder="Full name"></label>
     <fieldset class="chips" id="picks"><legend style="position:absolute;opacity:0">Choose events</legend></fieldset>
     <p class="sum" id="sum" aria-live="polite">Pick at least one event.</p>
     <div class="cta"><a class="btn solid" id="wa" href="#">Register on WhatsApp</a>
-    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=AURIX%20by%20FitNFine&dates=20270117/20270120&location=Ernakulam">Add to calendar</a><button class="btn" id="share">Share AURIX</button></div>
+    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=AURIX%20by%20FitNFine&dates=20270108/20270111&location=Ernakulam">Add to calendar</a><button class="btn" id="share">Share AURIX</button></div>
     <p><span class="holo">Say no to drugs. Stronger people. Brighter tomorrow.</span></p>
   </section>
-  <footer class="dark foot" style="clip-path:none"><div><b>AURIX</b><br>Jan 17–19, Ernakulam<br>Presented by FitNFine Fitness Club</div><div><b>Questions?</b><br>Message us on WhatsApp from the register section.</div><div><a href="#top" style="color:inherit">Back to top ↑</a><br>© 2026 FitNFine Fitness Club. AURIX is an anti-drug fitness festival.</div></footer>
+  <footer class="dark foot" style="clip-path:none"><div><b>AURIX</b><br>Jan 8–10, Ernakulam<br>Presented by FitNFine Fitness Club</div><div><b>Questions?</b><br>Message us on WhatsApp from the register section.</div><div><a href="#top" style="color:inherit">Back to top ↑</a><br>© 2026 FitNFine Fitness Club. AURIX is an anti-drug fitness festival.</div></footer>
 </div>
 <script>
 (function(){
 var $=function(s){return document.querySelector(s)},rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-var START='2027-01-17T00:00:00+05:30';
+var START='2027-01-08T00:00:00+05:30';
 var EV=[
-{n:'Marathon',d:0,bg:'#b00909',b:'Running shoes, a water bottle and photo ID.',r:['Arrive early for check-in and bib collection.','Wear your bib on the front at all times.','Stay on the marked route. Shortcuts mean disqualification.']},
-{n:'Deadlift',d:0,bg:'#1c0505',b:'Flat-soled shoes, a towel and photo ID.',r:['Warm up in the warm-up area only.','A lift counts when you stand tall, knees locked, bar under control.','Judges’ calls are final. Three attempts per lifter.']},
-{n:'Under 20 football',d:1,bg:'#e8160f',b:'Boots, shin guards and photo ID showing your age.',r:['Every player must be under 20 on match day. Bring photo ID.','Teams register before the event. Late teams forfeit.','Fair play first. Fouls and dissent are punished with cards.']},
-{n:'Arm wrestling',d:1,bg:'#2a0707',b:'A towel, a short-sleeve top and photo ID.',r:['Elbow stays on the pad and the free hand holds the peg.','A match starts on the referee’s call. False starts get a warning.','No slipping the grip, no lifting the elbow.']},
-{n:'Physique competition',d:2,bg:'#7d0505',b:'Approved posing wear, a towel and photo ID.',r:['Compete in approved posing wear only.','Follow the posing order the judges call.','Judges score symmetry, conditioning and presentation.']}];
-var DAYS=['Jan 17','Jan 18','Jan 19'];
+{n:'Marathon',d:0,bg:'#b00909',img:'marathon.webp',b:'Running shoes, a water bottle and photo ID.',r:['Arrive early for check-in and bib collection.','Wear your bib on the front at all times.','Stay on the marked route. Shortcuts mean disqualification.']},
+{n:'Deadlift',d:0,bg:'#1c0505',img:'deadlift.webp',b:'Flat-soled shoes, a towel and photo ID.',r:['Warm up in the warm-up area only.','A lift counts when you stand tall, knees locked, bar under control.','Judges’ calls are final. Three attempts per lifter.']},
+{n:'Under 20 football',d:1,bg:'#e8160f',img:'football.webp',b:'Boots, shin guards and photo ID showing your age.',r:['Every player must be under 20 on match day. Bring photo ID.','Teams register before the event. Late teams forfeit.','Fair play first. Fouls and dissent are punished with cards.']},
+{n:'Arm wrestling',d:1,bg:'#2a0707',img:'arm-wrestling.webp',b:'A towel, a short-sleeve top and photo ID.',r:['Elbow stays on the pad and the free hand holds the peg.','A match starts on the referee’s call. False starts get a warning.','No slipping the grip, no lifting the elbow.']},
+{n:'Physique competition',d:2,bg:'#7d0505',img:'physique.webp',b:'Approved posing wear, a towel and photo ID.',r:['Compete in approved posing wear only.','Follow the posing order the judges call.','Judges score symmetry, conditioning and presentation.']}];
+var DAYS=['Jan 8','Jan 9','Jan 10'];
 var MORE=[{n:'And many more',d:2,t:'To be announced',bg:'#3a0808',r:['More events will be added before the festival.','Registered participants hear first.','Got an idea? Message us on WhatsApp.'],b:'Updates will come through WhatsApp.'}];
 // build
 $('#days').innerHTML=DAYS.map(function(D,i){var l=EV.filter(function(e){return e.d==i}).map(function(e){return e.n});if(i==2)l.push('And many more');
-return '<div class="day"><b>'+D+'</b>'+l.map(function(x){return '<span>'+x+'</span>'}).join('')+'<a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('AURIX Day '+(i+1)+': '+l.join(', '))+'&dates=202701'+(17+i)+'/202701'+(18+i)+'&location=Ernakulam">Add Day '+(i+1)+' to calendar</a></div>'}).join('');
-$('#stackstage').innerHTML=EV.concat(MORE).map(function(e){return '<article class="card" style="background:'+e.bg+'"><div class="in"><h2>'+e.n+'</h2><div><span class="chipd">'+(e.t||('Day '+(e.d+1)+', '+DAYS[e.d]))+'</span><h3>Basic rules</h3><ul>'+e.r.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'+(e.b?'<p class="bring"><b>Bring</b> '+e.b+'</p>':'')+'</div></div><div class="shade"></div></article>'}).join('');
+return '<div class="day"><b>'+D+'</b>'+l.map(function(x){return '<span>'+x+'</span>'}).join('')+'<a class="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('AURIX Day '+(i+1)+': '+l.join(', '))+'&dates=202701'+String(8+i).padStart(2,'0')+'/202701'+String(9+i).padStart(2,'0')+'&location=Ernakulam">Add Day '+(i+1)+' to calendar</a></div>'}).join('');
+$('#stackstage').innerHTML=EV.concat(MORE).map(function(e){return '<article class="card" style="background:'+e.bg+'">'+(e.img?'<div class="card-media"><img src="'+e.img+'" alt=""><div class="card-overlay"></div></div>':'')+'<div class="in"><h2>'+e.n+'</h2><div><span class="chipd">'+(e.t||('Day '+(e.d+1)+', '+DAYS[e.d]))+'</span><h3>Basic rules</h3><ul>'+e.r.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'+(e.b?'<p class="bring"><b>Bring</b> '+e.b+'</p>':'')+'</div></div><div class="shade"></div></article>'}).join('');
 $('#pre').innerHTML=['Carry a valid photo ID.','Register for every event you enter.','Reach the venue 30 minutes before your event.','Take part at your own fitness level, and only if you’re medically fit.','Respect judges, volunteers and every competitor.','Stay clean. Anyone found using banned substances is out.'].map(function(x){return '<li>'+x+'</li>'}).join('');
 var WHY='AURIX is built on strength you earn. Drugs take your health, your future and the trust of your team. Here every rep, every mile and every match is clean.'.split(' ');
 $('#why').innerHTML=WHY.map(function(w){return '<span>'+w+'</span> '}).join('');var ws=[].slice.call($('#why').children);
@@ -211,7 +214,7 @@ $('#faqs').innerHTML=[['Who can take part?','Anyone fit to take part, at their o
 $('#picks').insertAdjacentHTML('beforeend',EV.map(function(e){return '<label class="chip"><input type="checkbox" value="'+e.n+'"><span>'+e.n+'</span></label>'}).join(''));
 var wa=$('#wa'),nm=$('#nm'),sum=$('#sum');function pk(){return [].map.call(document.querySelectorAll('#picks input:checked'),function(i){return i.value})}
 function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},2200)}
-function upd(){var v=pk(),n=nm.value.trim();wa.href='https://wa.me/?text='+encodeURIComponent('Hi FitNFine, I'+(n?' am '+n+' and I':'')+' want to register for AURIX (Jan 17–19, Ernakulam).'+(v.length?' Events: '+v.join(', ')+'.':''));wa.target='_blank';wa.rel='noopener';
+function upd(){var v=pk(),n=nm.value.trim();wa.href='https://wa.me/?text='+encodeURIComponent('Hi FitNFine, I'+(n?' am '+n+' and I':'')+' want to register for AURIX (Jan 8–10, Ernakulam).'+(v.length?' Events: '+v.join(', ')+'.':''));wa.target='_blank';wa.rel='noopener';
 var ds=[];EV.forEach(function(e){if(v.indexOf(e.n)>-1&&ds.indexOf(DAYS[e.d])<0)ds.push(DAYS[e.d])});
 sum.textContent=v.length?v.length+(v.length>1?' events':' event')+' selected, on '+ds.join(' and ')+'.':'Pick at least one event.';wa.firstChild.nodeValue=v.length?'Register for '+v.length+(v.length>1?' events':' event'):'Register on WhatsApp'}
 wa.addEventListener('click',function(e){if(!pk().length){e.preventDefault();var c=$('#picks');c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');toast('Pick at least one event first')}});
@@ -219,7 +222,7 @@ $('#picks').addEventListener('change',upd);nm.addEventListener('input',upd);upd(
 function burst(el){var r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;for(var i=0;i<28;i++){var d=document.createElement('i');d.className='cf';d.style.left=cx+'px';d.style.top=cy+'px';d.style.background=i%3?'#f2ede4':'#d10a0a';document.body.appendChild(d);var a=Math.random()*6.28,s=80+Math.random()*150;
 d.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+Math.cos(a)*s+'px,'+(Math.sin(a)*s+60)+'px) rotate('+(Math.random()*540)+'deg)',opacity:0}],{duration:900+Math.random()*500,easing:'cubic-bezier(.1,.7,.3,1)'}).onfinish=function(){this.effect.target.remove()}}}
 var pl=$('#pledge'),sp=$('#sharep');pl.onclick=function(){var on=pl.getAttribute('aria-pressed')!=='true';pl.setAttribute('aria-pressed',on);pl.textContent=on?'You’ve pledged. Stay clean.':'Take the pledge';sp.hidden=!on;if(on&&!rm)burst(pl);if(on)toast('Pledge taken. Stay clean.')};
-sp.href='https://wa.me/?text='+encodeURIComponent('I took the AURIX pledge: I say no to drugs. Join me at AURIX, Jan 17–19 in Ernakulam.');sp.target='_blank';
+sp.href='https://wa.me/?text='+encodeURIComponent('I took the AURIX pledge: I say no to drugs. Join me at AURIX, Jan 8–10 in Ernakulam.');sp.target='_blank';
 // countdown
 var cd=$('#cd');function tickcd(){var ms=new Date(START)-Date.now();if(ms<=0){cd.innerHTML='<div style="font-size:1.6rem">AURIX is live</div>';return}
 var s=Math.floor(ms/1000),p=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60],l=['days','hrs','min','sec'];
@@ -245,7 +248,7 @@ cards.forEach(function(c,i){var e=cl(s-i+1,0,1),d=cl(s-i,0,3),r=(1-E(e)),b=Math.
 c.style.visibility=(e<=0||d>=3)?'hidden':'visible';
 c.style.transform='translate3d(0,'+(r*100-d*2.5)+'%,0) scale('+(1-.045*d)+') rotateX('+(Math.min(d,1)*4-my*2)+'deg) rotateY('+(mx*3)+'deg)';
 c.style.borderRadius=(r*18)+'vw '+(r*18)+'vw '+b+'px '+b+'px / '+(r*14)+'vh '+(r*14)+'vh '+b+'px '+b+'px';
-c.firstChild.style.transform='translate3d(0,'+(-r*14)+'%,0)';c.lastChild.style.opacity=cl(d*.4,0,.7)});
+var inEl=c.querySelector('.in'),shEl=c.querySelector('.shade');if(inEl){var te=cl((e-.6)/.4,0,1),tease=E(te),trecede=1-E(cl((d-.45)/.4,0,1));inEl.style.transform='translate3d(0,'+((1-tease)*32-r*14).toFixed(2)+'px,0)';inEl.style.opacity=(tease*trecede).toFixed(3)}if(shEl)shEl.style.opacity=cl(d*.4,0,.7)});
 // horizontal
 var pa=cl(y-tA,0,Math.max(0,tW));$('#ambstage').style.transform='translate3d(0,'+pa+'px,0)';row.style.transform='translate3d('+(-pa)+'px,0,0)';
 // words
@@ -255,7 +258,7 @@ var RT=document.documentElement,cur=$('#cur'),cx=0,cy=0,px=0,py=0;
 addEventListener('pointermove',function(e){if(e.pointerType==='mouse'){px=e.clientX;py=e.clientY;RT.classList.add('mouse')}});
 document.addEventListener('mouseover',function(e){cur.classList.toggle('big',!!e.target.closest('a,button,summary,.chip,.card'))});
 (function L(){requestAnimationFrame(L);cx+=(px-cx)*.18;cy+=(py-cy)*.18;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)'})();
-$('#share').onclick=function(){var d={title:'AURIX by FitNFine',text:'AURIX, Jan 17–19 in Ernakulam. Fitness put into play. Say no to drugs.',url:location.href};
+$('#share').onclick=function(){var d={title:'AURIX by FitNFine',text:'AURIX, Jan 8–10 in Ernakulam. Fitness put into play. Say no to drugs.',url:location.href};
 if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){toast('Link copied')},function(){toast('Copy the link from your address bar')})}else toast('Copy the link from your address bar')};
 var hs=[].slice.call(document.querySelectorAll('.pad h2'));
 if(!rm&&window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target)}})},{threshold:.25});hs.forEach(function(x){x.classList.add('rv');io.observe(x)})}
